@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/photo_IV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/photo"
+        android:scaleType="centerCrop"
+        tools:background="#5677fc" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/gradient_IV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/gradient"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/space_V"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_large"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:id="@+id/author_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/space_V"
+        android:layout_marginBottom="@dimen/space_small"
+        android:layout_marginLeft="@dimen/space_large"
+        android:textColor="@color/text_author"
+        tools:ignore="RtlHardcoded"
+        tools:text="by Yaur Hazout"
+        tools:textSize="@dimen/text_author" />
+
+    <!-- To make space between Title and Author exactly as in design document would require some
+    typeface specific calculations, because bottom of Title is marked without typeface descender and
+    top of Author is marked what seems like on cap height and that does not include ascender. So
+    I just added 8dp space between TextViews -->
+
+    <TextView
+        android:id="@+id/title_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/author_TV"
+        android:layout_marginBottom="@dimen/space_normal"
+        android:layout_marginLeft="@dimen/space_large"
+        android:textColor="@color/text_title"
+        tools:ignore="RtlHardcoded"
+        tools:text="Cold Seaside"
+        tools:textSize="@dimen/text_title" />
+
+    <ImageView
+        android:id="@+id/avatar_IV"
+        android:layout_width="@dimen/avatar_size"
+        android:layout_height="@dimen/avatar_size"
+        android:layout_above="@+id/space_V"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/space_large"
+        android:contentDescription="@string/avatar"
+        tools:background="#673ab7"
+        tools:ignore="RtlHardcoded" />
+
+</merge>

@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">Flickr</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="photo">Photo</string>
+    <string name="avatar">Avatar</string>
+    <string name="f_by_x">by %s</string>
 
 </resources>

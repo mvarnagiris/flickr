@@ -1,20 +1,38 @@
 package com.code44.flickr.adapters;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 import com.code44.flickr.data.model.PhotoModel;
-import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView;
-import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridViewAdapter;
 
-public class FlickrAdapter extends AsymmetricGridViewAdapter<PhotoModel> {
+import java.util.ArrayList;
+import java.util.List;
 
-    public FlickrAdapter(Context context, AsymmetricGridView listView) {
-        super(context, listView, null);
+public class FlickrAdapter extends BaseAdapter {
+    final List<PhotoModel> photos = new ArrayList<>();
+
+    @Override public int getCount() {
+        return photos.size() / 2 + Math.max(photos.size() % 4, 1);
     }
 
-    @Override public View getActualView(int i, View view, ViewGroup viewGroup) {
+    @Override public Object getItem(int position) {
+        return photos.get(position);
+    }
+
+    @Override public long getItemId(int position) {
+        return position;
+    }
+
+    @Override public View getView(int position, View convertView, ViewGroup parent) {
         return null;
+    }
+
+    public void setPhotos(List<PhotoModel> photos) {
+        this.photos.clear();
+        if (photos != null) {
+            this.photos.addAll(photos);
+        }
+        notifyDataSetChanged();
     }
 }

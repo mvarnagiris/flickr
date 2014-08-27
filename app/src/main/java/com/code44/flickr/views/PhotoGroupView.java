@@ -32,6 +32,11 @@ public class PhotoGroupView extends LinearLayout {
         leftPhoto_V = (PhotoView) findViewById(R.id.leftPhoto_V);
         topRightPhoto_V = (PhotoView) findViewById(R.id.topRightPhoto_V);
         bottomRightPhoto_V = (PhotoView) findViewById(R.id.bottomRightPhoto_V);
+
+        // Setup
+        leftPhoto_V.setType(PhotoView.Type.LONG);
+        topRightPhoto_V.setType(PhotoView.Type.SQUARE);
+        bottomRightPhoto_V.setType(PhotoView.Type.SQUARE);
     }
 
     @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

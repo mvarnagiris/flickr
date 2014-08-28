@@ -16,7 +16,7 @@ public class PhotoGroupView extends LinearLayout {
     private final PhotoView topRightPhoto_V;
     private final PhotoView bottomRightPhoto_V;
 
-    @SuppressWarnings("UnusedDeclaration") public PhotoGroupView(Context context) {
+    public PhotoGroupView(Context context) {
         this(context, null);
     }
 
@@ -37,12 +37,6 @@ public class PhotoGroupView extends LinearLayout {
         leftPhoto_V.setType(PhotoView.Type.LONG);
         topRightPhoto_V.setType(PhotoView.Type.SQUARE);
         bottomRightPhoto_V.setType(PhotoView.Type.SQUARE);
-    }
-
-    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        final int size = getMeasuredWidth();
-        setMeasuredDimension(size, size);
     }
 
     public void setPhotos(PhotoModel leftPhoto, PhotoModel topRightPhoto, PhotoModel bottomRightPhoto) {

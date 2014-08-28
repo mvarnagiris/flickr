@@ -28,11 +28,11 @@ public class FlickrAdapter extends BaseAdapter {
     }
 
     @Override public int getItemViewType(int position) {
-        return position % 4 == 1 ? VIEW_TYPE_NORMAL : VIEW_TYPE_GROUP;
+        return position % 2 == 0 ? VIEW_TYPE_NORMAL : VIEW_TYPE_GROUP;
     }
 
     @Override public int getCount() {
-        return photos.size() / 2 + Math.max(photos.size() % 4, 1);
+        return photos.size() / 2 + Math.min(photos.size() % 4, 1);
     }
 
     @Override public Object getItem(int position) {
@@ -72,14 +72,26 @@ public class FlickrAdapter extends BaseAdapter {
     private void bindView(View view, int position, int viewType) {
         if (viewType == VIEW_TYPE_NORMAL) {
             final PhotoView photo_V = (PhotoView) view;
-            final PhotoModel model = photos.get(getFirstModelPositionForAdapterPosition(position, viewType));
+            final PhotoModel model = getModel(getFirstModelPositionForAdapterPosition(position, viewType));
             photo_V.setPhoto(model);
         } else {
             final PhotoGroupView photoGroup_V = (PhotoGroupView) view;
+            final int firstPosition = getFirstModelPositionForAdapterPosition(position, viewType);
+            final PhotoModel modelLeft = getModel(firstPosition);
+            final PhotoModel modelTopRight = getModel(firstPosition + 1);
+            final PhotoModel modelBottomRight = getModel(firstPosition + 2);
+            photoGroup_V.setPhotos(modelLeft, modelTopRight, modelBottomRight);
         }
     }
 
     private int getFirstModelPositionForAdapterPosition(int adapterPosition, int viewType) {
-        return adapterPosition * 2 - (viewType == VIEW_TYPE_NORMAL ? 1 : 2);
+        return (adapterPosition + 1) * 2 - (viewType == VIEW_TYPE_NORMAL ? 1 : 2) - 1;
+    }
+
+    private PhotoModel getModel(int position) {
+        if (position < photos.size()) {
+            return photos.get(position);
+        }
+        return null;
     }
 }

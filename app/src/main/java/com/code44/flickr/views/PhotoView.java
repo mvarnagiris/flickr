@@ -24,6 +24,8 @@ public class PhotoView extends RelativeLayout {
     private final TextView author_TV;
     private final ImageView avatar_IV;
 
+    private Type type;
+
     public PhotoView(Context context) {
         this(context, null);
     }
@@ -45,6 +47,18 @@ public class PhotoView extends RelativeLayout {
 
         // Setup
         setType(Type.WIDE);
+    }
+
+    @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        if (type == Type.LONG) {
+            final int width = getMeasuredWidth();
+            setMeasuredDimension(width, width * 2);
+        } else if (type == Type.SQUARE) {
+            final int size = getMeasuredWidth();
+            setMeasuredDimension(size, size);
+        }
     }
 
     public void setPhoto(PhotoModel photo) {
@@ -80,6 +94,7 @@ public class PhotoView extends RelativeLayout {
             default:
                 throw new IllegalArgumentException("Type " + type + " is not supported");
         }
+        this.type = type;
         requestLayout();
     }
 

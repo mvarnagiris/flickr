@@ -1,19 +1,10 @@
 package com.code44.flickr.data.model;
 
 public class PhotoModel {
-    private long id;
     private String title;
     private String author;
     private String photoUrl;
     private String authorAvatarUrl;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

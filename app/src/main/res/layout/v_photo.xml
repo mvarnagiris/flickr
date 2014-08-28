@@ -49,15 +49,13 @@
 
     <!-- To make space between Title and Author exactly as in design document would require some
     typeface specific calculations, because bottom of Title is marked without typeface descender and
-    top of Author is marked what seems like on cap height and that does not include ascender. So
-    I just added 8dp space between TextViews -->
+    top of Author is marked what seems like on cap height and that does not include ascender. -->
 
     <TextView
         android:id="@+id/title_TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/author_TV"
-        android:layout_marginBottom="@dimen/space_normal"
         android:layout_marginLeft="@dimen/space_large"
         android:textColor="@color/text_title"
         tools:ignore="RtlHardcoded"
